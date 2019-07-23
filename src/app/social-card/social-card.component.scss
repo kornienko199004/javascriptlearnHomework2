@@ -1,16 +1,11 @@
-.example-card {
-  max-width: 200px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
 .image-wrapper {
   width: 100px;
   height: 100px;
+  display: inline-block;
+
   & img {
-    width: 100%;
-    height: auto;
+    width: auto;
+    height: 100%;
     margin: 0 auto;
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ViewEncapsulation } from '@angular/compiler/src/core';
+import { Place } from '../shared/model';
 
 @Component({
   selector: 'app-main-card',
@@ -8,21 +9,30 @@ import { ViewEncapsulation } from '@angular/compiler/src/core';
   // encapsulation: ViewEncapsulation.None
 })
 export class MainCardComponent implements OnInit {
-  @Input() data: any[];
+  @Input() data: Place[];
+  @Input() types: any;
+  @Output() changedType = new EventEmitter<string>();
   @Output() changedIndex = new EventEmitter<number>();
 
-  index = 0;
+  hotelIndex = 0;
+  type: string;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-    console.log(this.data);
+    this.type = this.types[0];
   }
 
-  onChangeIndex(index: number) {
-    this.index = index;
-    console.log(index);
-    this.changedIndex.emit(this.index);
+  onSelectType(type: string) {
+    this.hotelIndex = 0;
+    this.type = type;
+    this.changedType.emit(this.type);
+    this.changedIndex.emit(this.hotelIndex);
+  }
+
+  onChooseHotel(index: number) {
+    this.hotelIndex = index;
+    this.changedIndex.emit(this.hotelIndex);
   }
 
 }

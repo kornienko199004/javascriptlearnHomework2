@@ -8,13 +8,17 @@ import { AppComponent } from './app.component';
 import { MainCardComponent } from './main-card/main-card.component';
 import { WeatherCardComponent } from './weather-card/weather-card.component';
 import { SocialCardComponent } from './social-card/social-card.component';
+import { FilterPipe } from './shared/filter.pipe';
+import { PhonePipe } from './shared/phone.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     MainCardComponent,
     WeatherCardComponent,
-    SocialCardComponent
+    SocialCardComponent,
+    FilterPipe,
+    PhonePipe
   ],
   imports: [
     BrowserModule,

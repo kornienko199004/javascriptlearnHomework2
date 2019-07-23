@@ -1,16 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Place } from '../shared/model';
 
 @Component({
   selector: 'app-weather-card',
   templateUrl: './weather-card.component.html',
   styleUrls: ['./weather-card.component.scss']
 })
-export class WeatherCardComponent implements OnInit {
-  @Input() data: any[];
-  @Input() index: number;
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class WeatherCardComponent {
+  @Input() hotel: Place;
 }

@@ -1,16 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Place } from '../shared/model';
 
 @Component({
   selector: 'app-social-card',
   templateUrl: './social-card.component.html',
   styleUrls: ['./social-card.component.scss']
 })
-export class SocialCardComponent implements OnInit {
-  @Input() data: any[];
-  @Input() index: number;
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class SocialCardComponent {
+  @Input() hotel: Place;
 }

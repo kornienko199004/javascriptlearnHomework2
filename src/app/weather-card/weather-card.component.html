@@ -1,26 +1,10 @@
-<!-- <mat-card class="example-card">
-    <mat-card-header>
-      <mat-card-title class="title">{{ data[index].weather.title }}</mat-card-title>
-    </mat-card-header>
-    <div class="image-wrapper">
-      <img mat-card-image [src]="data[index].weather.icon" [alt]="data[index].weather.title">
-    </div>
-    <mat-card-content>
-      <p>
-        <strong>Температура воздуха</strong>
-        {{ data[index].weather.temperature }}
-      </p>
-      <p>
-        <strong>Температура воды</strong>
-        {{ data[index].weather.water }}
-      </p>
-    </mat-card-content>
-  </mat-card> -->
-
-  <div class="temperatur">
-      <h5>Et harum quidem</h5>
-      <span class="w-line"> </span>
-      <span class="cloud"> </span>
-      <h2>14<sup class="degree">°</sup></h2>
-      <h6>Water 20<sup class="degree">°</sup></h6>
-    </div>
+<div class="temperatur">
+   <h5>{{ hotel.weather.title }}</h5>
+   <span class="w-line"> </span>
+   <!-- <span class="cloud"> </span> -->
+   <div class="image-wrapper">
+     <img [src]="hotel.weather.icon" [alt]="hotel.weather.title">
+   </div>
+   <h2>{{ hotel.weather.temperature }}<sup class="degree">°</sup></h2>
+   <h6>Вода {{ hotel.weather.water }}<sup class="degree">°</sup></h6>
+</div>
