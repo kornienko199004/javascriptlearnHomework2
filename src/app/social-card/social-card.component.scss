@@ -1,0 +1,16 @@
+.example-card {
+  max-width: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.image-wrapper {
+  width: 100px;
+  height: 100px;
+  & img {
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+  }
+}

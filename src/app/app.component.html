@@ -1,13 +1,24 @@
-<div class="row">
-    <div class="col-md-6">
-      <app-main-card [data]="data"></app-main-card>
-    </div>
-    <div class="col-md-6">
-      <div class="col-md-12">
-        <app-weather-card></app-weather-card>
-      </div>
-      <div class="col-md-12">
-        <app-social-card></app-social-card>
-      </div>
-    </div>
+<!-- <div class="wrapper">
+  <div class="column-left">
+    <app-main-card [data]="data"></app-main-card>
+  </div>
+  <div class="column-right">
+    <app-weather-card [data]="data"></app-weather-card>
+    <app-social-card [data]="data"></app-social-card>
+  </div>
+</div> -->
+
+<h1>Hot Weather Widget</h1>
+<div class="element">
+  <div class="element-left">
+      <app-main-card [data]="data" (changedIndex)="onChangeIndex($event)"></app-main-card>
+  </div>
+
+  <div class="element-right">
+      <app-weather-card [data]="data" [index]="index"></app-weather-card>
+      <app-social-card [data]="data" [index]="index"></app-social-card>
+  </div>
+
+  <div class="clear">
+  </div>
 </div>

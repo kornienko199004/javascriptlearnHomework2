@@ -25,9 +25,11 @@ interface Place {
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  index = 0;
+
   data: Place[] = [
     {
-      img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Moscow-City2015.jpg/405px-Moscow-City2015.jpg',
+      img: 'assets/images/moskow.webp',
       address: 'РФ Москва столица',
       phone: 89112223301,
       weather: {
@@ -39,15 +41,34 @@ export class AppComponent {
       social_info: {
          title: 'Instagram',
          // tslint:disable-next-line:max-line-length
-         img: 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn-st1.rtr-vesti.ru%2Fp%2Fxw_1446621.jpg&imgrefurl=https%3A%2F%2Fwww.vesti.ru%2Fdoc.html%3Fid%3D3132347&docid=9E_6B-C8Vq25WM&tbnid=ONNeCxWYN8JFgM%3A&vet=10ahUKEwjtv4SSwrvjAhVlkIsKHZYyBU0QMwhVKAMwAw..i&w=720&h=409&bih=881&biw=1745&q=instagram&ved=0ahUKEwjtv4SSwrvjAhVlkIsKHZYyBU0QMwhVKAMwAw&iact=mrc&uact=8',
+         img: '../assets/img/instagram.jpg',
          followers: 1000,
          following: 90,
       },
       type: 'Москва',
     },
     {
-      img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Moscow-City2015.jpg/405px-Moscow-City2015.jpg',
-      address: 'РФ Москва столица',
+      img: 'assets/images/spb.jpg',
+      address: 'РФ Санкт-Петербург',
+      phone: 89112223301,
+      weather: {
+         title: 'Пасмурно',
+         icon: '',
+         water: 20,
+         temperature: 23,
+      },
+      social_info: {
+         title: 'Instagram',
+         // tslint:disable-next-line:max-line-length
+         img: 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn-st1.rtr-vesti.ru%2Fp%2Fxw_1446621.jpg&imgrefurl=https%3A%2F%2Fwww.vesti.ru%2Fdoc.html%3Fid%3D3132347&docid=9E_6B-C8Vq25WM&tbnid=ONNeCxWYN8JFgM%3A&vet=10ahUKEwjtv4SSwrvjAhVlkIsKHZYyBU0QMwhVKAMwAw..i&w=720&h=409&bih=881&biw=1745&q=instagram&ved=0ahUKEwjtv4SSwrvjAhVlkIsKHZYyBU0QMwhVKAMwAw&iact=mrc&uact=8',
+         followers: 15000,
+         following: 901,
+      },
+      type: 'Санкт-Петербург',
+    },
+    {
+      img: 'assets/images/kazan.jpg',
+      address: 'РФ Казань',
       phone: 89112223301,
       weather: {
          title: 'Солнечно',
@@ -59,29 +80,15 @@ export class AppComponent {
          title: 'Instagram',
          // tslint:disable-next-line:max-line-length
          img: 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn-st1.rtr-vesti.ru%2Fp%2Fxw_1446621.jpg&imgrefurl=https%3A%2F%2Fwww.vesti.ru%2Fdoc.html%3Fid%3D3132347&docid=9E_6B-C8Vq25WM&tbnid=ONNeCxWYN8JFgM%3A&vet=10ahUKEwjtv4SSwrvjAhVlkIsKHZYyBU0QMwhVKAMwAw..i&w=720&h=409&bih=881&biw=1745&q=instagram&ved=0ahUKEwjtv4SSwrvjAhVlkIsKHZYyBU0QMwhVKAMwAw&iact=mrc&uact=8',
-         followers: 1000,
-         following: 90,
+         followers: 5000,
+         following: 120,
       },
-      type: 'Москва',
-    },
-    {
-      img: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Moscow-City2015.jpg/405px-Moscow-City2015.jpg',
-      address: 'РФ Москва столица',
-      phone: 89112223301,
-      weather: {
-         title: 'Солнечно',
-         icon: '',
-         water: 15,
-         temperature: 20,
-      },
-      social_info: {
-         title: 'Instagram',
-         // tslint:disable-next-line:max-line-length
-         img: 'https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn-st1.rtr-vesti.ru%2Fp%2Fxw_1446621.jpg&imgrefurl=https%3A%2F%2Fwww.vesti.ru%2Fdoc.html%3Fid%3D3132347&docid=9E_6B-C8Vq25WM&tbnid=ONNeCxWYN8JFgM%3A&vet=10ahUKEwjtv4SSwrvjAhVlkIsKHZYyBU0QMwhVKAMwAw..i&w=720&h=409&bih=881&biw=1745&q=instagram&ved=0ahUKEwjtv4SSwrvjAhVlkIsKHZYyBU0QMwhVKAMwAw&iact=mrc&uact=8',
-         followers: 1000,
-         following: 90,
-      },
-      type: 'Москва',
+      type: 'Казань',
     }
   ];
+
+  onChangeIndex(index: number) {
+    console.log(index);
+    this.index = index;
+  }
 }
