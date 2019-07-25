@@ -1,7 +1,6 @@
-<div class="temperatur">
+<div class="temperatur" *ngIf="hotel$ | async as hotel">
    <h5>{{ hotel.weather.title }}</h5>
    <span class="w-line"> </span>
-   <!-- <span class="cloud"> </span> -->
    <div class="image-wrapper">
      <img [src]="hotel.weather.icon" [alt]="hotel.weather.title">
    </div>

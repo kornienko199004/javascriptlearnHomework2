@@ -1,38 +1,92 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ViewEncapsulation } from '@angular/compiler/src/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Place } from '../shared/model';
+import { HotelsService } from '../hotels.service';
+import { Unsubscriber } from '../shared/unsubscriber';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-main-card',
   templateUrl: './main-card.component.html',
   styleUrls: ['./main-card.component.scss'],
-  // encapsulation: ViewEncapsulation.None
 })
-export class MainCardComponent implements OnInit {
-  @Input() data: Place[];
-  @Input() types: any;
-  @Output() changedType = new EventEmitter<string>();
-  @Output() changedIndex = new EventEmitter<number>();
+export class MainCardComponent  extends Unsubscriber implements OnInit {
+  @ViewChild('mainImg', { static: true }) mainImg: ElementRef;
 
-  hotelIndex = 0;
+  hotels: Place[] = [];
+  types: Set<string> = new Set();
+  hotelIndex: number;
   type: string;
 
-  constructor() {}
+  constructor(
+    private hotelsService: HotelsService
+  ) {
+    super();
+  }
 
   ngOnInit() {
-    this.type = this.types[0];
+    this.hotelsService.getHotels()
+      .pipe(
+        takeUntil(this.subscribeControler$$)
+      )
+      .subscribe(
+        (hotels: Place[]) => {
+          this.hotels = hotels;
+          this.changeMainImage();
+        }
+      );
+
+    this.hotelsService.getTypes()
+      .pipe(
+        takeUntil(this.subscribeControler$$)
+      )
+      .subscribe(
+        (types: Set<string>) => {
+          this.types = types;
+        }
+      );
+
+    this.hotelsService.getCurrentType()
+      .pipe(
+        takeUntil(this.subscribeControler$$)
+      )
+      .subscribe(
+        (type: string) => {
+          this.type = type;
+        }
+     );
+
+    this.hotelsService.getHotelIndex()
+      .pipe(
+        takeUntil(this.subscribeControler$$)
+      )
+       .subscribe(
+         (index: number) => {
+           this.hotelIndex = index;
+         }
+      );
+
+  }
+
+  getHotels() {
+    return this.hotelsService.getHotels();
+  }
+
+  changeMainImage() {
+    const imgUrl: Place = this.hotels.filter(({ type }) => type === this.type)[this.hotelIndex];
+    this.mainImg.nativeElement.src = imgUrl.img;
   }
 
   onSelectType(type: string) {
-    this.hotelIndex = 0;
     this.type = type;
-    this.changedType.emit(this.type);
-    this.changedIndex.emit(this.hotelIndex);
+    this.hotelsService.changeType(type);
+    this.hotelsService.changeIndex(0);
+    this.changeMainImage();
   }
 
   onChooseHotel(index: number) {
     this.hotelIndex = index;
-    this.changedIndex.emit(this.hotelIndex);
+    this.changeMainImage();
+    this.hotelsService.changeIndex(index);
   }
 
 }

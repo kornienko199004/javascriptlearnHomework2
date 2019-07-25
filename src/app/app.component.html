@@ -1,14 +1,13 @@
 <h1>Hot Weather Widget</h1>
 <div class="element">
   <div class="element-left">
-      <app-main-card [data]="data" [types]="types" (changedType)="onChangeType($event)" (changedIndex)="onChangeIndex($event)"></app-main-card>
+      <app-main-card></app-main-card>
   </div>
 
   <div class="element-right">
-      <app-weather-card [hotel]="(data | filter:type:types)[index]"></app-weather-card>
-      <app-social-card [hotel]="(data | filter:type:types)[index]"></app-social-card>
+      <app-weather-card></app-weather-card>
+      <app-social-card></app-social-card>
   </div>
 
-  <div class="clear">
-  </div>
+  <div class="clear"></div>
 </div>

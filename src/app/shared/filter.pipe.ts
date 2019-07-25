@@ -6,7 +6,7 @@ import { Place } from '../shared/model';
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(value: any, currentType: string, types: string[]): Place[] {
+  transform(value: any, currentType: string, types: Set<string>): Place[] {
     const selectedType = currentType ? currentType : types.values().next().value;
 
     return value.filter(({ type }) => type === selectedType);

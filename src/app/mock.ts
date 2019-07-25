@@ -7,7 +7,7 @@ export const data: Place[] = [
     phone: 89112223301,
     weather: {
        title: 'Солнечно',
-       icon: '../assets/img/sun.svg',
+       icon: 'assets/img/sun.svg',
        water: 15,
        temperature: 20,
     },
@@ -50,7 +50,6 @@ export const data: Place[] = [
     },
     social_info: {
        title: 'Instagram',
-       // tslint:disable-next-line:max-line-length
        img: 'assets/images/hotels/6.jpg',
        followers: 15000,
        following: 901,
@@ -69,7 +68,6 @@ export const data: Place[] = [
     },
     social_info: {
        title: 'Instagram',
-       // tslint:disable-next-line:max-line-length
        img: 'assets/images/hotels/8.jpg',
        followers: 15000,
        following: 901,
@@ -89,7 +87,6 @@ export const data: Place[] = [
     },
     social_info: {
        title: 'Instagram',
-       // tslint:disable-next-line:max-line-length
        img: 'assets/images/hotels/10.jpg',
        followers: 15000,
        following: 901,

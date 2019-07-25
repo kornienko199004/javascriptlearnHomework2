@@ -1,30 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Place } from './shared/model';
-import { data } from './mock';
+import { HotelsService } from './hotels.service';
+import { Observable, of } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { Unsubscriber } from './shared/unsubscriber';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  index = 0;
-  type: string;
-  data: Place[] = data;
-  types = new Set<string>();
+export class AppComponent extends Unsubscriber implements OnInit {
+  hotel$: Observable<Place>;
 
-  constructor() {
-    this.data.forEach(({ type }) => {
-      this.types.add(type);
-    });
-    this.type = this.types.values().next().value;
+  constructor(private hotelsService: HotelsService) {
+    super();
   }
 
-  onChangeIndex(index: number) {
-    this.index = index;
-  }
-
-  onChangeType(type: string) {
-    this.type = type;
+  ngOnInit() {
+    this.hotelsService.getCurrentHotel()
+      .pipe(
+        takeUntil(this.subscribeControler$$)
+      )
+      .subscribe((hotel: Place) => {
+        this.hotel$ = of(hotel);
+      });
   }
 }

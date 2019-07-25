@@ -1,4 +1,4 @@
-  <div class="teddy-bear">
+  <div class="teddy-bear" *ngIf="hotel$ | async as hotel">
           <div class="teddy-text">
             <h4>{{ hotel.social_info.title }}</h4>
             <span class="w-line"> </span>
